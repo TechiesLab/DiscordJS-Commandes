@@ -6,12 +6,22 @@ bot.on('ready', () => {
 });
 
 bot.on('message', function (msg) {
-  if (msg.content === 'Ping') {
-    msg.channel.send('Pong');
-  }
-  if (msg.content === 'Yin') {
-    msg.reply('Yang');
+  const msg_sep = msg.content.split(' ');
+  const premier_mot = msg_sep[0];
+  switch (premier_mot) {
+    case '!ping':
+      msg.reply('Pong');
+      break;
+    case '!yin':
+      msg.reply('Yang');
+      break;
+    case '!hey':
+      msg.reply('Hello');
+      break;
+    case '!dire':
+      msg.reply(msg_sep[1]);
+      break;
   }
 });
 
-bot.login('TOKEN');
+bot.login('NzkxNDE5MzI4ODY0MDU5NDAy.X-O4rw.eo9d8SbwqrjRfkTTQvOcuJJVNak');

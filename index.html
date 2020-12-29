@@ -49,6 +49,7 @@
             <ul>
               <li><a href="">Discord.js - Ping Pong</a></li>
             </ul>
+            <p>Ensuite, assure-toi que tu sois bien connecté à ton compte <a href="https://repl.it">Repl.It</a>, et que tu aies ton projet de la fois passée.</p>
           </div>
         </div>
       </div>
@@ -57,12 +58,12 @@
       <div class="card">
         <div class="card-header" id="heading2">
           <h2 class="mb-0">
-            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
               Étape 2 - Des commandes simples
             </button>
           </h2>
         </div>
-        <div id="collapse2" class="collapse show" aria-labelledby="heading2" data-parent="#accordionExample">
+        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
           <div class="card-body">
             <p>Si tu utilises Discord de temps à autres, tu as sûrement remarqué que pour interagir avec un bot tu mets un "!" devant ton message. Ceci est pour que le bot sache qu'on lui parle et que ce n'est pas un message normal.</p>
 
@@ -85,11 +86,109 @@
               }
             </code></pre>
 
-            <p>Mais ceci n'est pas la façon la plus éfficace de le faire. Imagine que tu aies 100 commandes...</p>
+            <p>Essaie d'implémenter jusqu'à 5 commandes (jeux de mots/rimes (Ce que tu veux en fait)) et montres les à ton animateur.</p>
+
+            <p>Tu remarquera sûrement que ceci est assez long à écrire avec tous les <code>msg.content ==== "...."</code> qui semblent redondants. Il y a une façon alternative que j'aimerai que tu essaies: le bloc <code>switch</code></p>
+
+            <p>Voici quelques commandes avec des <code>if</code>:</p>
+
+            <pre><code class="language-js">
+              if(msg.content === "!ping") {
+                msg.reply("Pong");
+              }
+              if(msg.content === "!yin") {
+                msg.reply("Yang");
+              }
+              if(msg.content === "!hey") {
+                msg.reply("Hello");
+              }
+            </code></pre>
+
+            <p>Avec un <code>switch</code>, on a ceci:</p>
+
+            <pre><code class="language-js">
+              switch(msg.content) {
+                case("!ping"):
+                  msg.reply("Pong");
+                  break;
+                case("!yin"):
+                  msg.reply("Yang");
+                  break;
+                case("!hey"):
+                  msg.reply("Hello");
+                  break;
+              }
+            </code></pre>
+
+            <p>Le <code>switch</code> est utilisé quand tu as beaucoup de <code>if</code> qui comparent tous une même valeur à un ensemble de valeurs. Ici, <code>msg.content</code> est comparé à une valeur dans chaque <code>if</code>, donc un peut utiliser un <code>switch</code>.</p>
           </div>
         </div>
       </div>
 
+      <!-- Étape 3 -->
+      <div class="card">
+        <div class="card-header" id="heading3">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+              Étape 3 - Des commandes à arguments
+            </button>
+          </h2>
+        </div>
+        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>On va maintenant ajouter des arguments à nos commandes. Qu'est ce que cela veut dire? Expliquons cela par un example: On va créer une commande <code>!dire</code>. On devra écrire un mot derrière, qui est le mot que le bot doit dire.</p>  
+
+            <p>Donc quand on écrit <code>!dire Bonjour</code>, le bot doit répondre "Bonjour". Simple non? Mais on veut aussi garder nos commandes précédentes!</p>
+
+            <p>En fait, on doit trouver une manière de séparer la commande (Le premier mot avec un "!" devant) et le reste.</p>
+
+            <p>On a une méthode qui fait cela!</p>
+
+            <pre><code class="language-js">
+              "Bonjour je suis Daniel".split(" "); // => ["Bonjour", "je", "suis", "Daniel"]
+            </code></pre>
+
+            <p>La méthode <code>split()</code> est exécutée sur une chaîne de caractères (Du texte), et sépare ce texte à chaque fois qu'il voit l'argument donné. Dans l'example d'avant, l'argument était un espace, donc il sépare simplement les mots. Mais</p>
+
+            <pre><code class="language-js">
+              "Bonsoir je suis Daniel".split("i"); // => ["Bonso", "r je su" "s Dan", "el"]
+            </code></pre>
+
+            <p>Vois-tu comment on pourra s'en servir de ceci?</p>
+
+            <p>En effet, on va séparer le message avec les espaces. On doit aussi se souvenir du message séparé, donc on le mets dans une variable.</p>
+
+            <pre><code class="language-js">
+              const msg_sep = msg.content.split(" ");
+            </code></pre>
+
+            <p>Ensuite, au lieu de vérifier si le message entier vaut "!ping" ou "!yin" etc, on va vérifier si le premier mot du message vaut cela.</p>
+
+            <p>On peut retirer le premier mot avec:</p>
+
+            <pre><code class="language-js">
+              const premier_mot = msg_sep[0];
+            </code></pre>
+
+            <p>Souviens toi qu'en programmation on compte à partir de 0, donc le 0e mot est en fait le 1er mot, comme voulu. Dans ton <code>switch</code>, tu peux alors remplacer <code>msg.content</code> par <code>premier_mot</code>. On a donc quelque chose du style:</p>
+
+            <pre><code class="language-js">
+              const msg_sep = msg.content.split(" ");
+              const premier_mot = msg_sep[0];
+              switch(premier_mot) {
+                case("!ping"):
+                  msg.reply("Pong");
+                  break;
+                // ...
+              }
+            </code></pre>
+
+            <p>Jusque là, on a simplement ajouté du code pour rien... Mais on peut ajouter un nouveau <code>case</code> avec "!dire". Dans ce cas, le bot doit répondre le deuxième mot du message.</p>
+
+            <p>Essaie de le faire! Souviens toi qu'en language ordinateur le 2e mot est en fait le mot numéro 1. Si tu as besoin d'aide, demande à un animateur.</p>
+          </div>
+        </div>
+      </div>
 
 
     </div> 
