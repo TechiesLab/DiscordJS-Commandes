@@ -6,6 +6,7 @@ bot.on('ready', () => {
 });
 
 bot.on('message', function (msg) {
+  console.log(msg.channel.id);
   const msg_sep = msg.content.split(' ');
   const premier_mot = msg_sep[0];
   switch (premier_mot) {

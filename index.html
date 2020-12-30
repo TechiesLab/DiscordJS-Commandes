@@ -191,6 +191,109 @@
       </div>
 
 
+      <!-- Étape 4 -->
+      <div class="card">
+        <div class="card-header" id="heading4">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+              Étape 4 - Des commandes à réponses aléatoires
+            </button>
+          </h2>
+        </div>
+        <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>On va maintenant explorer la fonction <code>random()</code>. En anglais, "random" veut dire "aléatoire". Imaginons on veut ajouter une commande "!random" qui répond un mot aléatoire d'une liste. Pour commencer, on va juste répondre un nombre aléatoire.</p>
+
+            <p>Ajoute un nouveau <code>case</code> pour "!random" qui répond <code>Math.random()</code>. Ceci va répondre un nombre aléatoire entre 0 et 1</p>
+
+            <pre><code class="language-js">
+              Math.random(); // => 0.6839520323555972
+            </code></pre>
+
+            <p>Mais on ne veut pas un nombre à virgules aléatoire entre 0 et 1. On veut un élément aléatoire d'une liste. Donc on veut un indice aléatoire entre 0 et le nombre d'éléments de la liste. Pour avoir un nombre entier entre 0 et N pour un certain N, on prend d'abord un nombre aléatoire à virgules entre 0 et N et ensuite on prend la partie entière.</p>
+
+            <pre><code class="language-js">
+              Math.random() * 10; // => 7.464961919625317
+              Math.floor( Math.random() * 10 ); // => 7
+            </code></pre>
+
+            <p>Pour prendre la partie entière, on utilise la fonction <code>Math.floor()</code>.</p>
+
+            <p>Si on veut un élément aléatoire d'une liste, on doit d'abord avoir une liste. Définis une liste avec quelques mots.</p>
+
+            <pre><code class="language-js">
+              const liste = ["Bonjour", "Au revoir", "Hello", "Hey", "Salut", "À plus"];
+            </code></pre>
+
+            <p>J'ai ici une liste de 6 éléments. J'ai donc besoin d'un nombre aléatoire entre 0 et 5 (Parce qu'on commence à 0). Pour avoir un nombre entier aléatoire entre 0 et 5, on fait:</p>
+
+            <pre><code class="language-js">
+              Math.floor( Math.random() * 6 );
+            </code></pre>
+
+            <p>On veut donc répondre un mot aléatoire de la liste. Rappelle toi que pour prendre un élément de la liste, on dit <code>liste[...]</code>, où <code>...</code> représente l'indice qu'on veut. Ici, cela doit être un nombre aléatoire:</p>
+
+            <pre><code class="language-js">
+              liste[ Math.floor( Math.random() * 6 ) ];
+            </code></pre>
+
+            <p>Imaginons on veut changer la liste par après. Par example, si on veut rajouter des éléments. On doit alors changer le <code>6</code> dans la commande. On pourrait simplement coder le <code>6</code> à être la longueur de la liste. </p>
+
+            <p>Pour avoir la longueur de la liste en JavaScript, on utilise <code>.length</code>. Donc pour avoir la longueur de la liste, on peut utiliser:</p>
+
+            <pre><code class="language-js">
+              liste.length; // => 6
+            </code></pre>
+
+            <p>Change le <code>6</code> en <code>liste.length</code> et change un peu la liste. Normalement tout devrait encore marcher!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 5 -->
+      <div class="card">
+        <div class="card-header" id="heading5">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+              Étape 5 - Limiter à un canal
+            </button>
+          </h2>
+        </div>
+        <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Imaginons que certains commandes doivent uniquement marcher dans le canal "test-bot". Et d'autres uniquement dans le canal "general". Ou un autre canal.</p>
+
+            <p>On peut répondre uniquement si on est dans le bon canal. Tu sais peut être que plusieurs canaux peuvent avoir le même nom sur Discord, donc on ne peut pas utiliser le nom pour savoir dans quel canal on est.</p>
+
+            <p>En fait chaque canal a une ID unique. Cet ID ressemble à "791424989370515457", et on ne peut donc pas simplement le deviner. Il nous faut donc le trouver dans Discord.</p>
+
+            <p>Dans Discord, vas dans les réglages d'utilisateurs:</p>
+
+            <img src="./images/UserSettings.png" alt="UserSettings" width="60%">
+
+            <p>Ici va dans "Appearance". Tout en bas, tu trouveras "Developer Mode". Active cette option.</p>
+
+            <img src="./images/DeveloperMode.png" alt="DeveloperMode" width="70%">
+
+            <p>Maintenant on peut voir l'ID de chaque canal. Va sur le canal et fais un clique droit. En bas il y aura l'option "Copy Channel ID". Ceci copie l'ID du canal!</p>
+
+            <p>Tu verra donc que l'ID du canal "test-bot" est "791424989370515457".</p>
+
+            <p>On peut vérifier si le canal dans lequel a été envoyé le message est le canal "test-bot", on fait la condition suivante:</p>
+
+            <pre><code class="language-js">
+              if( msg.channel.id === "791424989370515457" ) {
+                // ...
+              }
+            </code></pre>
+
+            <p>Essaie donc de limiter certaines commandes au canal "test-bot", ou à un autre canal!</p>
+
+            <p>CHALLENGE: Tu peux aussi faire en sorte que ton bot réponde différentes choses en fonction du canal. Par example, dans un premier canal le bot répond "Bonjour", et dans un autre il répond "Au Revoir".</p>
+          </div>
+        </div>
+      </div>
+
     </div> 
   </div>
 
