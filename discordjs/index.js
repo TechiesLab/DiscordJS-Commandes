@@ -6,7 +6,6 @@ bot.on('ready', () => {
 });
 
 bot.on('message', function (msg) {
-  console.log(msg.channel.id);
   const msg_sep = msg.content.split(' ');
   const premier_mot = msg_sep[0];
   switch (premier_mot) {
@@ -21,6 +20,11 @@ bot.on('message', function (msg) {
       break;
     case '!dire':
       msg.reply(msg_sep[1]);
+      break;
+    case '!test':
+      if (msg.channel.id === '791424989370515457') {
+        msg.reply('Testing only in Test-Bot');
+      }
       break;
   }
 });
