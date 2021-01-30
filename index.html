@@ -186,6 +186,20 @@
             <p>Jusque là, on a simplement ajouté du code pour rien... Mais on peut ajouter un nouveau <code>case</code> avec "!dire". Dans ce cas, le bot doit répondre le deuxième mot du message.</p>
 
             <p>Essaie de le faire! Souviens toi qu'en language ordinateur le 2e mot est en fait le mot numéro 1. Si tu as besoin d'aide, demande à un animateur.</p>
+
+            <p>Il y a uniquement un problème avec ceci. Imaginons que l'on veuille que le bot dise "Salut David". On va donc faire la commande "!dire Salut David". Mais pour l'instant notre bot répond simplement le 2e mot de la commande, c'est-à-dire "Salut". En fait il doit répondre tous les mots qui viennent après.</p>
+
+            <p>Pour ce faire on va utiliser une boucle. </p>
+
+            <pre><code class="language-js">
+              const mots = [];
+              for(let i=..., i<..., i++) {
+                mots.push(msg_sep[i]);
+              }
+              msg.reply(mots.join(' '));
+            </code></pre>
+
+            <p>Dans ce code, tu dois remplacer les '...' par les valeurs appropriées. Le premier '...' représente le mot auquel on commence (Le 2e, numéro 1 en language ordinateur). Le deuxième '...' représente le nombre de mots (Utilise le <code>.length</code> ;-) )</p>
           </div>
         </div>
       </div>
@@ -290,6 +304,31 @@
             <p>Essaie donc de limiter certaines commandes au canal "test-bot", ou à un autre canal!</p>
 
             <p>CHALLENGE: Tu peux aussi faire en sorte que ton bot réponde différentes choses en fonction du canal. Par example, dans un premier canal le bot répond "Bonjour", et dans un autre il répond "Au Revoir".</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 6 -->
+      <div class="card">
+        <div class="card-header" id="heading6">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+              Étape 6 - Vérifie que tu as bien tout fait
+            </button>
+          </h2>
+        </div>
+        <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Il est maintenant temps de vérifier que tu as réussi toutes les tâches d'aujourd'hui! Les noms des commandes sont pas importantes, ce sont leurs fonctionalités qui sont importantes.</p>
+            
+            <ul>
+              <li>Ton bot doit avoir un message standart <code>!standart</code> qui répond une réponse prédefinie</li>
+              <li>Il peut aussi avoir une commande qui répond différemment en fonction de l'argument (Deuxième mot). Ceci peut simplement être répeter le deuxième mot.</li>
+              <li>Il peut aussi répondre un message aléatoire à une commande.</li>
+              <li>Certaines commandes marchent différemment dans différents canaux. Certaines ne marchent même pas dans certains canaux.</li>
+            </ul>
+
+            <p>Si ton bot sait faire toutes ces étapes, il est fonctionel pour passer à la fiche suivante!</p>
           </div>
         </div>
       </div>
