@@ -29,4 +29,4 @@ bot.on('message', function (msg) {
   }
 });
 
-bot.login('NzkxNDE5MzI4ODY0MDU5NDAy.X-O4rw.uqhOaMmHHVb4fL3A1SscjsEmbHg');
+bot.login('TOKEN');
