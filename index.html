@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DiscordJS</title>
+  <title>DiscordJS #2</title>
   <link rel="shortcut icon" type="image/png" href="images/ico_full.png"/>
   <link rel="stylesheet" href="stylesheet/prism.css">
   <link rel="stylesheet" href="stylesheet/style.css">
@@ -12,7 +12,7 @@
 <body>
 
   <!-- Introduction -->
-  <div class="banner" style="display: block !important; background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://i.redd.it/gmyldjq35fy51.png');">
+  <div class="banner" style="display: block !important; background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/parrot.jpg);">
     <div id="class-languages">
       <i class="fab fa-html5 mr-1" style="color: #f84820"></i>
       <i class="fab fa-css3-alt mr-1" style="color: #1970b5"></i>
@@ -22,7 +22,7 @@
       <div class="main">
         <img src="images/logo.png" alt="">
         <div class="class-title">
-          <h1>Commandes dans DiscordJS</h1>
+          <h1>Le bot perroquet</h1>
         </div>
       </div>
       <p>On va explorer comment créer des commandes pour ton bot Discord</p>
@@ -47,9 +47,9 @@
           <div class="card-body">
             <p>Avant d'entamer ce défi, assure toi d'avoir déjà fait ceux ci:</p>
             <ul>
-              <li><a href="">Discord.js - Ping Pong</a></li>
+              <li><a href="https://techieslab.github.io/DiscordJS-PingPong/" target="_blank">Discord.js - Ping Pong</a></li>
             </ul>
-            <p>Ensuite, assure-toi que tu sois bien connecté à ton compte <a href="https://repl.it">Repl.It</a>, et que tu aies ton projet de la fois passée.</p>
+            <p>Ensuite, assure-toi que tu sois bien connecté à ton compte <a href="https://repl.it">Repl.it</a>, et que tu aies ton projet de la fois passée.</p>
           </div>
         </div>
       </div>
@@ -65,46 +65,46 @@
         </div>
         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
           <div class="card-body">
-            <p>Si tu utilises Discord de temps à autres, tu as sûrement remarqué que pour interagir avec un bot tu mets un "!" devant ton message. Ceci est pour que le bot sache qu'on lui parle et que ce n'est pas un message normal.</p>
+            <p>Si tu utilises Discord de temps à autre, tu as sûrement remarqué que pour interagir avec un bot tu ajoutes un <strong>!</strong> devant ton message. Ce point d'exclamation sert à indiquer au bot qu'il s'agit d'un message pour lui et non d'un message "normal".</p>
 
-            <p>La fois passée on avait créé un code qui répondait "Pong" quand on disait "Ping". Une commande plus adaptée serait au bot de répondre "Pong" lorsqu'on dit "!ping". Ceci sera donc la commande <code>ping</code>.</p>
+            <p>La fois passée on avait créé un code qui répondait <strong>Pong</strong> quand on écrivait le message <strong>Ping</strong>. Une commande plus adaptée pour le bot serait <strong>!ping</strong> :
 
             <pre><code class="language-js">
-              if(msg.content === "!ping") {
+              if (msg.content === "!ping") {
                 msg.reply("Pong");
               }
             </code></pre>
 
-            <p>On peut faire plusieurs commandes comme ceci en mettent plusieurs <code>if</code> à la suite l'un de l'autre:</p>
+            <p>On peut créer plusieurs commandes comme celle-ci en ajoutant plusieurs <code>if</code> l'un à la suite de l'autre:</p>
 
             <pre><code class="language-js">
-              if(msg.content === "!ping") {
+              if (msg.content === "!ping") {
                 msg.reply("Pong");
               }
-              if(msg.content === "!yin") {
+              if (msg.content === "!yin") {
                 msg.reply("Yang");
               }
             </code></pre>
 
-            <p>Essaie d'implémenter jusqu'à 5 commandes (jeux de mots/rimes (Ce que tu veux en fait)) et montres les à ton animateur.</p>
+            <p>Essaie d'implémenter jusqu'à 5 commandes (jeux de mots, rimes, ce que tu veux en fait...) et montre-les à ton animateur.</p>
 
-            <p>Tu remarquera sûrement que ceci est assez long à écrire avec tous les <code>msg.content ==== "...."</code> qui semblent redondants. Il y a une façon alternative que j'aimerai que tu essaies: le bloc <code>switch</code></p>
+            <p>Tu remarqueras sans doute que tous les <code>msg.content === "...."</code>, c'est assez long à écrire! Et puis c'est redondant. Il y a une façon alternative que j'aimerais que tu essaies: le bloc <code>switch</code></p>
 
-            <p>Voici quelques commandes avec des <code>if</code>:</p>
+            <p>Voici quelques commandes avec la syntaxe <code>if</code>:</p>
 
             <pre><code class="language-js">
-              if(msg.content === "!ping") {
+              if (msg.content === "!ping") {
                 msg.reply("Pong");
               }
-              if(msg.content === "!yin") {
+              if (msg.content === "!yin") {
                 msg.reply("Yang");
               }
-              if(msg.content === "!hey") {
+              if (msg.content === "!hey") {
                 msg.reply("Hello");
               }
             </code></pre>
 
-            <p>Avec un <code>switch</code>, on a ceci:</p>
+            <p>Alors qu'avec la syntaxe <code>switch</code>, on a plutôt ceci:</p>
 
             <pre><code class="language-js">
               switch(msg.content) {
@@ -120,7 +120,7 @@
               }
             </code></pre>
 
-            <p>Le <code>switch</code> est utilisé quand tu as beaucoup de <code>if</code> qui comparent tous une même valeur à un ensemble de valeurs. Ici, <code>msg.content</code> est comparé à une valeur dans chaque <code>if</code>, donc un peut utiliser un <code>switch</code>.</p>
+            <p>La syntaxe <code>switch</code> est utilisée quand tu as beaucoup de <code>if</code> qui comparent tous une même valeur à un ensemble de valeurs. Ici, <code>msg.content</code> est comparé à une valeur dans chaque <code>if</code>, donc un peut utiliser un <code>switch</code>.</p>
           </div>
         </div>
       </div>
@@ -130,52 +130,87 @@
         <div class="card-header" id="heading3">
           <h2 class="mb-0">
             <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-              Étape 3 - Des commandes à arguments
+              Étape 3 - Le bot perroquet 🦜
             </button>
           </h2>
         </div>
         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
           <div class="card-body">
-            <p>On va maintenant ajouter des arguments à nos commandes. Qu'est ce que cela veut dire? Expliquons cela par un example: On va créer une commande <code>!dire</code>. On devra écrire un mot derrière, qui est le mot que le bot doit dire.</p>  
+            <p>On va créer une nouvelle commande <code>!dire</code> un peu spéciale.</p>
 
-            <p>Donc quand on écrit <code>!dire Bonjour</code>, le bot doit répondre "Bonjour". Simple non? Mais on veut aussi garder nos commandes précédentes!</p>
+            <p>Si on écrit le message<code>!dire Bonjour</code> dans Discord, en bon perroquet, notre bot devra répondre... "Bonjour".</p>
+            <p>Si on écrit le message<code>!dire Cacahouète</code>, notre bot perroquet répondra "Cacahouète".</p>
+            <p>Simple, non? En passant, on doit garder nos commandes précédentes!</p>
 
-            <p>En fait, on doit trouver une manière de séparer la commande (Le premier mot avec un "!" devant) et le reste.</p>
+            <p>On doit trouver une manière de séparer la commande en plusieurs mots: le premier mot avec un "!" devant et le reste.</p>
 
-            <p>On a une méthode qui fait cela!</p>
+            <p>La bonne nouvelle, c'est qu'en JavaScript, il y a une fonction qui fait cela. C'est la fonction <code>split()</code> :</p>
 
             <pre><code class="language-js">
               "Bonjour je suis Daniel".split(" "); // => ["Bonjour", "je", "suis", "Daniel"]
             </code></pre>
 
-            <p>La méthode <code>split()</code> est exécutée sur une chaîne de caractères (Du texte), et sépare ce texte à chaque fois qu'il voit l'argument donné. Dans l'example d'avant, l'argument était un espace, donc il sépare simplement les mots. Mais</p>
+            <p>La fonction <code>split()</code> est exécutée sur une chaîne de caractères (du texte), et sépare ce texte à chaque fois qu'il voit l'argument donné. Dans l'example d'avant, l'argument était un espace, donc il sépare le texte après chaque espace...</p>
+
+            <p>Si on avait donné la lettre "i" comme argument, voici ce qu'on aurait:</p>
+
 
             <pre><code class="language-js">
               "Bonsoir je suis Daniel".split("i"); // => ["Bonso", "r je su" "s Dan", "el"]
             </code></pre>
 
-            <p>Vois-tu comment on pourra s'en servir de ceci?</p>
+            <p>À ton avis, comment pourrait-on se servir de la fonction <code>split()</code> pour notre bot?</p>
 
-            <p>En effet, on va séparer le message avec les espaces. On doit aussi se souvenir du message séparé, donc on le mets dans une variable.</p>
+            <p>
+              <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint" role="button" aria-expanded="false" aria-controls="collapseHint">Indice</a>
+            </p>
+            <div class="collapse mb-3" id="collapseHint">
+              <div class="card card-body">
+                <p>Tu pourrais séparer le message reçu par le bot en fonction des espaces. Par ailleurs, pour que l'ordinateur se souvienne du message séparé, il faut le stocker dans une variable.</p>
+
+              </div>
+            </div>
+
+            <p>
+              <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer" role="button" aria-expanded="false" aria-controls="collapseAnswer">Réponse</a>
+            </p>
+            <div class="collapse mb-3" id="collapseAnswer">
+              <div class="card card-body">
+              <pre><code class="language-js">
+                const msgSep = msg.content.split(" ");
+              </code></pre>
+
+              </div>
+            </div>
+
+            <p>Une fois ton message séparé en plusieurs mots, tu dois vérifier si le <strong>premier mot</strong> du message équivaut à la commande "!ping" ou "!yin", etc.</p>
+
+            <p>Pour accéder au premier mot de ta liste, tu peux utiliser l'index. En JavaScript, les listes commencent toujours à l'index...</p>
 
             <pre><code class="language-js">
-              const msg_sep = msg.content.split(" ");
+              const premierMot = msgSep[???];
             </code></pre>
 
-            <p>Ensuite, au lieu de vérifier si le message entier vaut "!ping" ou "!yin" etc, on va vérifier si le premier mot du message vaut cela.</p>
+            <p>
+              <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer" role="button" aria-expanded="false" aria-controls="collapseAnswer">Réponse</a>
+            </p>
+            <div class="collapse mb-3" id="collapseAnswer">
+              <div class="card card-body">
+                Les listes commencent à l'index 0. Ton code aura donc l'air de ceci:
+              <pre><code class="language-js">
+                const premierMot = msgSep[0];
+              </code></pre>
+              </div>
+            </div>
 
-            <p>On peut retirer le premier mot avec:</p>
+
+            <p>Dans ta syntaxe <code>switch</code>, tu peux maintenant remplacer <code>msg.content</code> par <code>premierMot</code>. On a donc quelque chose du style:</p>
 
             <pre><code class="language-js">
-              const premier_mot = msg_sep[0];
-            </code></pre>
+              const msgSep = msg.content.split(" ");
+              const premierMot = msgSep[0];
 
-            <p>Souviens toi qu'en programmation on compte à partir de 0, donc le 0e mot est en fait le 1er mot, comme voulu. Dans ton <code>switch</code>, tu peux alors remplacer <code>msg.content</code> par <code>premier_mot</code>. On a donc quelque chose du style:</p>
-
-            <pre><code class="language-js">
-              const msg_sep = msg.content.split(" ");
-              const premier_mot = msg_sep[0];
-              switch(premier_mot) {
+              switch(premierMot) {
                 case("!ping"):
                   msg.reply("Pong");
                   break;
@@ -183,23 +218,23 @@
               }
             </code></pre>
 
-            <p>Jusque là, on a simplement ajouté du code pour rien... Mais on peut ajouter un nouveau <code>case</code> avec "!dire". Dans ce cas, le bot doit répondre le deuxième mot du message.</p>
+            <p>Jusque là, on a simplement rallongé notre code... Mais on peut maintenant utiliser le deuxième mot du message avec notre commande "!dire". Si le message est <code>!dire Bonjour</code>, le bot répond "Bonjour". Si le message est <code>!dire Yooo</code>, le bot répond Yooo...</p>
 
-            <p>Essaie de le faire! Souviens toi qu'en language ordinateur le 2e mot est en fait le mot numéro 1. Si tu as besoin d'aide, demande à un animateur.</p>
+            <p>Essaie de le faire! Souviens toi qu'en JavaScript, le 2e mot est en fait le mot à l'index 1. Si tu as besoin d'aide, demande à un animateur.</p>
 
-            <p>Il y a uniquement un problème avec ceci. Imaginons que l'on veuille que le bot dise "Salut David". On va donc faire la commande "!dire Salut David". Mais pour l'instant notre bot répond simplement le 2e mot de la commande, c'est-à-dire "Salut". En fait il doit répondre tous les mots qui viennent après.</p>
+            <p>Il y a un petit un problème avec ceci. Imaginons que l'on veuille que le bot perroquet dise "Salut David". On va lancer la commande "!dire Salut David". Mais pour l'instant notre bot répond simplement le 2ème mot de la commande, c'est-à-dire "Salut". En fait il doit répondre tous les mots qui viennent après.</p>
 
             <p>Pour ce faire on va utiliser une boucle. </p>
 
             <pre><code class="language-js">
               const mots = [];
               for(let i=..., i<..., i++) {
-                mots.push(msg_sep[i]);
+                mots.push(msgSep[i]);
               }
               msg.reply(mots.join(' '));
             </code></pre>
 
-            <p>Dans ce code, tu dois remplacer les '...' par les valeurs appropriées. Le premier '...' représente le mot auquel on commence (Le 2e, numéro 1 en language ordinateur). Le deuxième '...' représente le nombre de mots (Utilise le <code>.length</code> ;-) )</p>
+            <p>Dans ce code, tu dois remplacer les '...' par les valeurs appropriées. Le premier '...' représente le mot auquel on commence (le 2ème, soit index 1 en JavaScript). Le deuxième '...' représente le nombre de mots (Utilise le <code>.length</code> ;-) )</p>
           </div>
         </div>
       </div>
@@ -210,7 +245,7 @@
         <div class="card-header" id="heading4">
           <h2 class="mb-0">
             <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-              Étape 4 - Des commandes à réponses aléatoires
+              Étape 4 - Le perroquet foufou: réponses aléatoires
             </button>
           </h2>
         </div>
@@ -224,7 +259,7 @@
               Math.random(); // => 0.6839520323555972
             </code></pre>
 
-            <p>Mais on ne veut pas un nombre à virgules aléatoire entre 0 et 1. On veut un élément aléatoire d'une liste. Donc on veut un indice aléatoire entre 0 et le nombre d'éléments de la liste. Pour avoir un nombre entier entre 0 et N pour un certain N, on prend d'abord un nombre aléatoire à virgules entre 0 et N et ensuite on prend la partie entière.</p>
+            <p>Mais on ne veut pas un nombre à virgule aléatoire entre 0 et 1. On veut un élément aléatoire d'une liste. On veut un indice aléatoire entre 0 et le nombre d'éléments de la liste. Pour avoir un nombre entier entre 0 et N, on prend d'abord un nombre aléatoire à virgules entre 0 et N et ensuite on prend la partie entière.</p>
 
             <pre><code class="language-js">
               Math.random() * 10; // => 7.464961919625317
@@ -239,7 +274,7 @@
               const liste = ["Bonjour", "Au revoir", "Hello", "Hey", "Salut", "À plus"];
             </code></pre>
 
-            <p>J'ai ici une liste de 6 éléments. J'ai donc besoin d'un nombre aléatoire entre 0 et 5 (Parce qu'on commence à 0). Pour avoir un nombre entier aléatoire entre 0 et 5, on fait:</p>
+            <p>J'ai ici une liste de 6 éléments. J'ai donc besoin d'un nombre aléatoire entre 0 et 5 (parce qu'on commence à 0). Pour avoir un nombre entier aléatoire entre 0 et 5, on fait:</p>
 
             <pre><code class="language-js">
               Math.floor( Math.random() * 6 );
@@ -296,7 +331,7 @@
             <p>On peut vérifier si le canal dans lequel a été envoyé le message est le canal "test-bot", on fait la condition suivante:</p>
 
             <pre><code class="language-js">
-              if( msg.channel.id === "791424989370515457" ) {
+              if ( msg.channel.id === "791424989370515457" ) {
                 // ...
               }
             </code></pre>
@@ -320,7 +355,7 @@
         <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
           <div class="card-body">
             <p>Il est maintenant temps de vérifier que tu as réussi toutes les tâches d'aujourd'hui! Les noms des commandes sont pas importantes, ce sont leurs fonctionalités qui sont importantes.</p>
-            
+
             <ul>
               <li>Ton bot doit avoir un message standart <code>!standart</code> qui répond une réponse prédefinie</li>
               <li>Il peut aussi avoir une commande qui répond différemment en fonction de l'argument (Deuxième mot). Ceci peut simplement être répeter le deuxième mot.</li>
@@ -333,7 +368,7 @@
         </div>
       </div>
 
-    </div> 
+    </div>
   </div>
 
 
